@@ -8,7 +8,8 @@
       "Bash(npm uninstall -g openclaw)",
       "Bash(tasklist)",
       "Bash(wmic process where \"name=''node.exe''\" get ProcessId,CommandLine)",
-      "Bash(cmd /c \"taskkill /F /PID 7556\")"
+      "Bash(cmd /c \"taskkill /F /PID 7556\")",
+      "Bash(curl -s \"https://api.github.com/repos/bdrsmsdn/portfolio/contents\")"
     ]
   }
 }

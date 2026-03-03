@@ -4,8 +4,9 @@
     {
       "name": "portfolio",
       "runtimeExecutable": "node",
-      "runtimeArgs": ["C:/BADRA/portfolio/node_modules/vite/bin/vite.js", "--port", "5173"],
-      "port": 5173
+      "runtimeArgs": ["C:/BADRA/portfolio/node_modules/vite/bin/vite.js"],
+      "port": 5173,
+      "autoPort": true
     }
   ]
 }
