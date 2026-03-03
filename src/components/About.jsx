@@ -71,7 +71,7 @@ export default function About({ text, tagline }) {
 
               {/* Photo — no filter, clip only */}
               <image
-                href="/profile.jpg"
+                href="/profiles.jpg"
                 x="0" y="0"
                 width="200" height="260"
                 preserveAspectRatio="xMidYMin slice"
