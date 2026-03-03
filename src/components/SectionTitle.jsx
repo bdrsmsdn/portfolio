@@ -1,8 +1,15 @@
-export default function SectionTitle({ children }) {
+export default function SectionTitle({ children, number }) {
   return (
-    <h2 className="text-3xl mb-6 text-[#8B5E3C] font-[cursive] relative inline-block">
-      {children}
-      <span className="block h-[2px] w-full bg-[#8B5E3C]/40 mt-1" />
-    </h2>
+    <div className="flex items-center gap-3 mb-10">
+      {number && (
+        <span className="font-mono text-[#64FFDA] text-sm shrink-0">
+          {number}.
+        </span>
+      )}
+      <h2 className="text-2xl md:text-3xl font-bold text-[#CCD6F6] whitespace-nowrap">
+        {children}
+      </h2>
+      <div className="flex-1 h-px bg-[#1E2D4A] max-w-xs" />
+    </div>
   )
 }
