@@ -26,7 +26,7 @@ export default function About({ text, tagline }) {
           <div className="grid grid-cols-2 gap-4 mt-6">
             {[
               { label: 'Location', value: 'Jakarta, Indonesia' },
-              { label: 'Focus', value: 'Mobile Development' },
+              { label: 'Focus', value: 'Fullstack Engineering' },
               { label: 'Company', value: 'BNI' },
               { label: 'Available', value: 'Open to opportunities' },
             ].map(({ label, value }) => (
@@ -48,11 +48,12 @@ export default function About({ text, tagline }) {
             </div>
             <pre className="p-5 font-mono text-xs text-[#8892B0] leading-6 overflow-x-auto">
 {`{
-  `}<span style={{color:'#4FC3F7'}}>"role"</span>{`: "Mobile Dev",
-  `}<span style={{color:'#4FC3F7'}}>"stack"</span>{`: ["iOS", "Android", "RN"],
-  `}<span style={{color:'#4FC3F7'}}>"backend"</span>{`: "ASP.NET + Node",
+  `}<span style={{color:'#4FC3F7'}}>"role"</span>{`: "Fullstack Engineer",
+  `}<span style={{color:'#4FC3F7'}}>"mobile"</span>{`: ["iOS", "Android", "RN"],
+  `}<span style={{color:'#4FC3F7'}}>"backend"</span>{`: "ASP.NET + SQL Server + IIS",
+  `}<span style={{color:'#4FC3F7'}}>"security"</span>{`: ["SAST", "DAST", "Pentest"],
   `}<span style={{color:'#4FC3F7'}}>"years_exp"</span>{`: `}<span style={{color:'#BB86FC'}}>3</span>{`,
-  `}<span style={{color:'#4FC3F7'}}>"loves"</span>{`: "Roblox games",
+  `}<span style={{color:'#4FC3F7'}}>"loves"</span>{`: "Vibe coding + Roblox",
   `}<span style={{color:'#4FC3F7'}}>"coffee"</span>{`: `}<span style={{color:'#FF7B72'}}>true</span>{`
 }`}
             </pre>

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import SectionTitle from './SectionTitle'
 import {
   SiReact, SiAndroid, SiApple, SiDotnet, SiNodedotjs,
-  SiMysql, SiJavascript, SiPhp, SiGit, SiRoblox,
+  SiMysql, SiJavascript, SiPhp, SiGit, SiRoblox, SiSharp,
 } from 'react-icons/si'
 import { FiCode, FiLock, FiZap } from 'react-icons/fi'
 
@@ -11,7 +11,8 @@ const iconMap = {
   SiAndroid: SiAndroid,
   SiApple: SiApple,
   SiDotnet: SiDotnet,
-  SiCsharp: SiDotnet,
+  SiCsharp: SiSharp,
+  SiSharp: SiSharp,
   SiNodedotjs: SiNodedotjs,
   SiMicrosoftsqlserver: FiCode,
   SiMysql: SiMysql,

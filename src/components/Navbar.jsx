@@ -1,6 +1,67 @@
 import { useState, useEffect } from 'react'
 import { HiMenuAlt3, HiX } from 'react-icons/hi'
 
+function PlanetLogo() {
+  return (
+    <svg
+      viewBox="0 0 56 56"
+      width="38"
+      height="38"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-label="logo"
+    >
+      {/* Large sparkle — top left */}
+      <path
+        d="M10 10 L11.4 14.6 L16 16 L11.4 17.4 L10 22 L8.6 17.4 L4 16 L8.6 14.6 Z"
+        fill="#64FFDA"
+      />
+      {/* Small sparkle — top right */}
+      <path
+        d="M43 6 L43.9 8.6 L46.5 9.5 L43.9 10.4 L43 13 L42.1 10.4 L39.5 9.5 L42.1 8.6 Z"
+        fill="#64FFDA"
+        opacity="0.75"
+      />
+      {/* Back half of orbit ring (behind planet) */}
+      <ellipse
+        cx="30"
+        cy="32"
+        rx="19"
+        ry="7"
+        transform="rotate(-30 30 32)"
+        stroke="#64FFDA"
+        strokeWidth="1.5"
+        strokeDasharray="22 36"
+        strokeDashoffset="0"
+        fill="none"
+        opacity="0.4"
+      />
+      {/* Planet body */}
+      <circle
+        cx="30"
+        cy="32"
+        r="11"
+        fill="#050B18"
+        stroke="#64FFDA"
+        strokeWidth="1.5"
+      />
+      {/* Front half of orbit ring (in front of planet) */}
+      <ellipse
+        cx="30"
+        cy="32"
+        rx="19"
+        ry="7"
+        transform="rotate(-30 30 32)"
+        stroke="#64FFDA"
+        strokeWidth="1.5"
+        strokeDasharray="36 22"
+        strokeDashoffset="22"
+        fill="none"
+      />
+    </svg>
+  )
+}
+
 const navLinks = [
   { href: '#about', label: 'About' },
   { href: '#skills', label: 'Skills' },
@@ -31,11 +92,13 @@ export default function Navbar() {
         {/* Logo */}
         <a
           href="#hero"
-          className="font-mono text-[#CCD6F6] font-bold text-lg hover:text-[#64FFDA] transition-colors"
+          className="flex items-center gap-2 group hover:opacity-80 transition-opacity"
+          aria-label="Home"
         >
-          <span className="text-[#64FFDA]">&lt;</span>
-          badra
-          <span className="text-[#64FFDA]">/&gt;</span>
+          <PlanetLogo />
+          <span className="font-mono text-[#8892B0] text-sm group-hover:text-[#64FFDA] transition-colors hidden sm:inline">
+            univertse
+          </span>
         </a>
 
         {/* Desktop nav */}

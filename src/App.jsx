@@ -11,6 +11,7 @@ import Contact from './components/Contact'
 import ScrollToTop from './components/ScrollToTop'
 import FloatingOrbs from './components/FloatingOrbs'
 import CursorGlow from './components/CursorGlow'
+import { FiHeart } from 'react-icons/fi'
 
 export default function App() {
   return (
@@ -41,8 +42,8 @@ export default function App() {
 
         <Contact email={profile.contact.email} />
 
-        <footer className="text-center font-mono text-xs text-[#8892B0]/40 mt-10 pb-10">
-          Designed &amp; Built by Badra Samsudin
+        <footer className="text-center font-mono text-xs text-[#8892B0]/40 mt-10 pb-10 flex items-center justify-center gap-1.5">
+          Made with <FiHeart size={12} className="text-red-400/60" /> by Badra S.
         </footer>
       </div>
 

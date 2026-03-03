@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react'
-import { FiArrowDown, FiGithub } from 'react-icons/fi'
-import { SiLinkedin } from 'react-icons/si'
+import { FiArrowDown, FiGithub, FiLinkedin } from 'react-icons/fi'
 
 const roles = [
+  'Fullstack Engineer',
   'Mobile Developer',
   'Backend Engineer',
-  'iOS & Android Dev',
-  'React Native Dev',
 ]
 
 export default function Header({ name, location }) {
@@ -97,7 +95,7 @@ export default function Header({ name, location }) {
           className="text-[#8892B0] text-base md:text-lg max-w-xl mb-10 leading-relaxed opacity-0"
           style={{ animation: 'fadeUp 0.5s ease-out 0.8s forwards' }}
         >
-          Software Engineer building reliable mobile apps and backend systems.
+          Fullstack Software Engineer — mobile apps, backend APIs, and web systems.
           Currently at{' '}
           <span className="text-[#CCD6F6]">BNI</span>, based in{' '}
           <span className="text-[#CCD6F6]">{location}</span>.
@@ -136,7 +134,7 @@ export default function Header({ name, location }) {
             className="px-4 py-3 border border-[#1E2D4A] text-[#8892B0] rounded hover:border-[#64FFDA] hover:text-[#64FFDA] transition-all"
             aria-label="LinkedIn"
           >
-            <SiLinkedin size={18} />
+            <FiLinkedin size={18} />
           </a>
         </div>
 
