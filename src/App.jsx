@@ -11,6 +11,7 @@ import Contact from './components/Contact'
 import ScrollToTop from './components/ScrollToTop'
 import FloatingOrbs from './components/FloatingOrbs'
 import CursorGlow from './components/CursorGlow'
+import StarField from './components/StarField'
 import { FiHeart } from 'react-icons/fi'
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
     <main className="relative min-h-screen bg-[#050B18] text-[#CCD6F6] font-sans">
       {/* Background layers */}
       <div className="fixed inset-0 bg-grid-dots pointer-events-none" style={{ zIndex: 0 }} />
+      <StarField />
       <FloatingOrbs />
       <CursorGlow />
 

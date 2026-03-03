@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 import SectionTitle from './SectionTitle'
-import { FiBriefcase } from 'react-icons/fi'
 
 function ExperienceItem({ item, index }) {
   const ref = useRef(null)
@@ -28,10 +27,15 @@ function ExperienceItem({ item, index }) {
       className={`relative pl-8 transition-all duration-700 ease-out ${
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
       }`}
-      style={{ transitionDelay: visible ? `${index * 100}ms` : '0ms' }}
+      style={{ transitionDelay: visible ? `${index * 120}ms` : '0ms' }}
     >
-      {/* Timeline dot */}
-      <div className="absolute left-0 top-1.5 w-3 h-3 rounded-full bg-[#64FFDA] ring-4 ring-[#64FFDA]/20" />
+      {/* Timeline dot — pulses in when card becomes visible */}
+      <div
+        className={`absolute left-0 top-1.5 w-3 h-3 rounded-full bg-[#64FFDA] ring-4 ring-[#64FFDA]/20
+          transition-all duration-500 ease-out
+          ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}
+        style={{ transitionDelay: visible ? `${index * 120 + 200}ms` : '0ms' }}
+      />
 
       <div className="glass-card rounded-lg p-5 neon-border">
         <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
@@ -59,13 +63,40 @@ function ExperienceItem({ item, index }) {
 }
 
 export default function Experience({ items }) {
+  const sectionRef = useRef(null)
+  const lineRef = useRef(null)
+  const [lineVisible, setLineVisible] = useState(false)
+
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setLineVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.05 },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section id="experience" className="mb-28">
+    <section id="experience" className="mb-28" ref={sectionRef}>
       <SectionTitle number="04">Experience</SectionTitle>
 
       <div className="relative">
-        {/* Timeline line */}
-        <div className="absolute left-[5px] top-3 bottom-3 w-px bg-gradient-to-b from-[#64FFDA]/40 via-[#1E2D4A] to-transparent" />
+        {/* Timeline line — draws down on scroll */}
+        <div
+          ref={lineRef}
+          className="absolute left-[5px] top-3 bottom-3 w-px bg-gradient-to-b from-[#64FFDA]/50 via-[#64FFDA]/20 to-transparent origin-top"
+          style={{
+            transform: lineVisible ? 'scaleY(1)' : 'scaleY(0)',
+            transition: 'transform 1.2s cubic-bezier(0.4, 0, 0.2, 1)',
+          }}
+        />
 
         <div className="space-y-5">
           {items.map((item, i) => (
