@@ -1,21 +1,87 @@
 import { useEffect, useRef, useState } from 'react'
 import SectionTitle from './SectionTitle'
+import { FiExternalLink, FiGithub, FiStar } from 'react-icons/fi'
 
-const onTiltMove = (e) => {
-  const el = e.currentTarget
-  const { left, top, width, height } = el.getBoundingClientRect()
-  const x = (e.clientX - left) / width - 0.5
-  const y = (e.clientY - top) / height - 0.5
-  el.style.transform = `perspective(700px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) scale3d(1.02,1.02,1.02)`
-  el.style.transition = 'transform 0.1s ease'
+function ProjectCard({ project, index, visible }) {
+  const [hovered, setHovered] = useState(false)
+
+  return (
+    <div
+      className={`glass-card rounded-xl p-6 flex flex-col gap-4 cursor-default
+        transition-all duration-600 ease-out
+        ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      style={{ transitionDelay: visible ? `${index * 100}ms` : '0ms' }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      {/* Top row */}
+      <div className="flex items-start justify-between gap-2">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-lg bg-[#64FFDA]/10 flex items-center justify-center">
+            <span className="text-[#64FFDA] font-mono text-xs font-bold">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+          </div>
+          {project.featured && (
+            <span className="flex items-center gap-1 text-[#FEBC2E] text-xs font-mono">
+              <FiStar size={11} />
+              Featured
+            </span>
+          )}
+        </div>
+        <div className="flex gap-3 text-[#8892B0]">
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-[#64FFDA] transition-colors"
+              aria-label="GitHub"
+            >
+              <FiGithub size={18} />
+            </a>
+          )}
+          {project.live && (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-[#64FFDA] transition-colors"
+              aria-label="Live demo"
+            >
+              <FiExternalLink size={18} />
+            </a>
+          )}
+        </div>
+      </div>
+
+      {/* Title */}
+      <h3
+        className={`text-[#CCD6F6] font-semibold text-lg leading-tight transition-colors duration-200 ${
+          hovered ? 'text-[#64FFDA]' : ''
+        }`}
+      >
+        {project.title}
+      </h3>
+
+      {/* Desc */}
+      <p className="text-[#8892B0] text-sm leading-relaxed flex-1">
+        {project.desc}
+      </p>
+
+      {/* Tags */}
+      <div className="flex flex-wrap gap-2 mt-auto pt-2">
+        {project.tags.map((tag) => (
+          <span key={tag} className="tech-tag">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+  )
 }
 
-const onTiltLeave = (e) => {
-  e.currentTarget.style.transform = ''
-  e.currentTarget.style.transition = 'transform 0.5s ease'
-}
-
-function ProjectItem({ project, index }) {
+export default function Projects({ items }) {
   const ref = useRef(null)
   const [visible, setVisible] = useState(false)
 
@@ -29,41 +95,47 @@ function ProjectItem({ project, index }) {
           observer.disconnect()
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.05 },
     )
     observer.observe(el)
     return () => observer.disconnect()
   }, [])
 
-  return (
-    <div
-      ref={ref}
-      className={`transition-all duration-600 ease-out ${
-        visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-6'
-      }`}
-      style={{ transitionDelay: visible ? `${index * 80}ms` : '0ms' }}
-    >
-      <div
-        onMouseMove={onTiltMove}
-        onMouseLeave={onTiltLeave}
-        className="border-l-4 border-[#8B5E3C] pl-4 cursor-default"
-        style={{ transformOrigin: 'left center' }}
-      >
-        <h3 className="font-semibold">{project.title}</h3>
-        <p className="text-sm opacity-80">{project.desc}</p>
-      </div>
-    </div>
-  )
-}
+  const featured = items.filter((p) => p.featured)
+  const others = items.filter((p) => !p.featured)
 
-export default function Projects({ items }) {
   return (
-    <section className="mb-20">
-      <SectionTitle>Projects</SectionTitle>
-      <div className="space-y-6">
-        {items.map((project, i) => (
-          <ProjectItem key={project.title} project={project} index={i} />
-        ))}
+    <section id="projects" className="mb-28">
+      <SectionTitle number="03">Projects</SectionTitle>
+
+      <div ref={ref}>
+        {/* Featured projects - larger cards */}
+        {featured.length > 0 && (
+          <div className="grid md:grid-cols-2 gap-5 mb-5">
+            {featured.map((project, i) => (
+              <ProjectCard
+                key={project.title}
+                project={project}
+                index={i}
+                visible={visible}
+              />
+            ))}
+          </div>
+        )}
+
+        {/* Other projects */}
+        {others.length > 0 && (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {others.map((project, i) => (
+              <ProjectCard
+                key={project.title}
+                project={project}
+                index={featured.length + i}
+                visible={visible}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   )

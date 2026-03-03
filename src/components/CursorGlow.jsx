@@ -4,10 +4,9 @@ export default function CursorGlow() {
   const glowRef = useRef(null)
 
   useEffect(() => {
-    // Only on pointer devices (not touch-only)
     if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return
 
-    const SIZE = 380
+    const SIZE = 420
     const pos = { x: -1000, y: -1000 }
     const cur = { x: -1000, y: -1000 }
     let raf
@@ -20,11 +19,10 @@ export default function CursorGlow() {
     const lerp = (a, b, t) => a + (b - a) * t
 
     const tick = () => {
-      cur.x = lerp(cur.x, pos.x, 0.055)
-      cur.y = lerp(cur.y, pos.y, 0.055)
+      cur.x = lerp(cur.x, pos.x, 0.06)
+      cur.y = lerp(cur.y, pos.y, 0.06)
       if (glowRef.current) {
-        glowRef.current.style.transform =
-          `translate(${cur.x - SIZE / 2}px, ${cur.y - SIZE / 2}px)`
+        glowRef.current.style.transform = `translate(${cur.x - SIZE / 2}px, ${cur.y - SIZE / 2}px)`
       }
       raf = requestAnimationFrame(tick)
     }
@@ -43,10 +41,10 @@ export default function CursorGlow() {
       ref={glowRef}
       className="fixed top-0 left-0 pointer-events-none"
       style={{
-        width: '380px',
-        height: '380px',
+        width: '420px',
+        height: '420px',
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(139,94,60,0.11) 0%, transparent 65%)',
+        background: 'radial-gradient(circle, rgba(100,255,218,0.04) 0%, transparent 65%)',
         zIndex: 1,
         willChange: 'transform',
       }}

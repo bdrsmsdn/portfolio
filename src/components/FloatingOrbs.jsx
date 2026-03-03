@@ -1,33 +1,45 @@
 export default function FloatingOrbs() {
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-      {/* Top-left large orb */}
-      <div style={{
-        position: 'absolute',
-        width: '650px', height: '650px',
-        borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(139,94,60,0.13) 0%, transparent 68%)',
-        top: '-150px', left: '-150px',
-        animation: 'floatA 24s ease-in-out infinite',
-      }} />
-      {/* Right-center orb */}
-      <div style={{
-        position: 'absolute',
-        width: '500px', height: '500px',
-        borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(139,94,60,0.09) 0%, transparent 68%)',
-        top: '35%', right: '-120px',
-        animation: 'floatB 30s ease-in-out infinite',
-      }} />
-      {/* Bottom-left orb */}
-      <div style={{
-        position: 'absolute',
-        width: '420px', height: '420px',
-        borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(139,94,60,0.07) 0%, transparent 68%)',
-        bottom: '5%', left: '15%',
-        animation: 'floatC 20s ease-in-out infinite',
-      }} />
+      {/* Top-left cyan orb */}
+      <div
+        style={{
+          position: 'absolute',
+          width: '700px',
+          height: '700px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(100,255,218,0.05) 0%, transparent 65%)',
+          top: '-200px',
+          left: '-200px',
+          animation: 'orbitA 28s ease-in-out infinite',
+        }}
+      />
+      {/* Right blue orb */}
+      <div
+        style={{
+          position: 'absolute',
+          width: '550px',
+          height: '550px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(79,195,247,0.04) 0%, transparent 65%)',
+          top: '30%',
+          right: '-150px',
+          animation: 'orbitB 35s ease-in-out infinite',
+        }}
+      />
+      {/* Bottom purple orb */}
+      <div
+        style={{
+          position: 'absolute',
+          width: '450px',
+          height: '450px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(187,134,252,0.04) 0%, transparent 65%)',
+          bottom: '10%',
+          left: '20%',
+          animation: 'orbitC 22s ease-in-out infinite',
+        }}
+      />
     </div>
   )
 }
