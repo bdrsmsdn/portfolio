@@ -1,114 +1,63 @@
-import { useEffect, useRef, useState } from 'react'
-import SectionTitle from './SectionTitle'
+import { useState } from 'react'
 import {
   SiReact, SiAndroid, SiApple, SiDotnet, SiNodedotjs,
   SiMysql, SiJavascript, SiPhp, SiGit, SiRoblox, SiSharp,
 } from 'react-icons/si'
-import { FiCode, FiLock, FiZap } from 'react-icons/fi'
+import { Code2, Zap } from 'lucide-react'
 
 const iconMap = {
-  SiReact: SiReact,
-  SiAndroid: SiAndroid,
-  SiApple: SiApple,
-  SiDotnet: SiDotnet,
-  SiCsharp: SiSharp,
-  SiSharp: SiSharp,
-  SiNodedotjs: SiNodedotjs,
-  SiMicrosoftsqlserver: FiCode,
-  SiMysql: SiMysql,
-  SiJavascript: SiJavascript,
-  SiPhp: SiPhp,
-  SiGit: SiGit,
-  SiRoblox: SiRoblox,
+  SiReact, SiAndroid, SiApple, SiDotnet, SiNodedotjs, SiMysql,
+  SiJavascript, SiPhp, SiGit, SiRoblox,
+  SiCsharp: SiSharp, SiSharp,
+  SiMicrosoftsqlserver: Code2,
 }
 
 const categories = ['Mobile', 'Backend', 'Frontend', 'Tools']
 
-function SkillCard({ skill, index, visible }) {
-  const IconComponent = skill.icon ? (iconMap[skill.icon] || FiCode) : FiZap
+function SkillRow({ skill }) {
+  const Icon = skill.icon ? iconMap[skill.icon] || Code2 : Zap
 
   return (
-    <div
-      className={`neon-border rounded-lg p-4 flex items-center gap-3 cursor-default
-        transition-all duration-500 ease-out bg-[#0D1527]/60
-        ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-      style={{ transitionDelay: visible ? `${index * 45}ms` : '0ms' }}
-    >
-      <div
-        className="shrink-0 p-2 rounded-md"
-        style={{ background: `${skill.color}15` }}
-      >
-        <IconComponent
-          size={18}
-          style={{ color: skill.color || '#64FFDA' }}
-        />
-      </div>
-      <span className="text-[#CCD6F6] text-sm font-medium leading-tight">
-        {skill.name}
-      </span>
+    <div className="flex items-center gap-3 py-3 border-b border-line">
+      <Icon size={16} className="text-paper-3 shrink-0" />
+      <span className="font-body text-sm text-paper-2">{skill.name}</span>
     </div>
   )
 }
 
 export default function Skills({ items }) {
-  const ref = useRef(null)
-  const [visible, setVisible] = useState(false)
   const [activeCategory, setActiveCategory] = useState('All')
 
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.1 },
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-
   const filtered =
-    activeCategory === 'All'
-      ? items
-      : items.filter((s) => s.category === activeCategory)
+    activeCategory === 'All' ? items : items.filter((s) => s.category === activeCategory)
 
   return (
-    <section id="skills" className="mb-28">
-      <SectionTitle number="02">Skills</SectionTitle>
+    <section id="skills" className="py-24 border-t border-line">
+      <div className="max-w-6xl mx-auto px-6">
+        <p className="font-mono text-xs tracking-[0.2em] uppercase text-paper-3 mb-8">Skills</p>
 
-      {/* Category filter */}
-      <div className="flex flex-wrap gap-2 mb-8">
-        {['All', ...categories].map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setActiveCategory(cat)}
-            className={`font-mono text-xs px-4 py-2 rounded-full border transition-all ${
-              activeCategory === cat
-                ? 'border-[#64FFDA] text-[#64FFDA] bg-[#64FFDA]/10'
-                : 'border-[#1E2D4A] text-[#8892B0] hover:border-[#64FFDA]/40 hover:text-[#CCD6F6]'
-            }`}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
+        <div className="flex flex-wrap gap-2 mb-8" role="group" aria-label="Filter skills by category">
+          {['All', ...categories].map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              aria-pressed={activeCategory === cat}
+              className={`font-mono text-xs uppercase tracking-wide px-4 py-2 rounded-full border transition-colors duration-200 ${
+                activeCategory === cat
+                  ? 'border-paper bg-paper text-ink'
+                  : 'border-line text-paper-2 hover:border-paper-2 hover:text-paper'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
 
-      <div
-        ref={ref}
-        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3"
-      >
-        {filtered.map((skill, i) => (
-          <SkillCard
-            key={skill.name}
-            skill={skill}
-            index={i}
-            visible={visible}
-          />
-        ))}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-8">
+          {filtered.map((skill) => (
+            <SkillRow key={skill.name} skill={skill} />
+          ))}
+        </div>
       </div>
     </section>
   )

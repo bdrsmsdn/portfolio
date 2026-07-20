@@ -1,63 +1,19 @@
 import { useState, useEffect } from 'react'
-import { HiMenuAlt3, HiX } from 'react-icons/hi'
+import { Menu, X, Download } from 'lucide-react'
 
-function PlanetLogo() {
+function Logomark() {
   return (
     <svg
-      viewBox="0 0 56 56"
-      width="38"
-      height="38"
+      viewBox="0 0 32 32"
+      width="30"
+      height="30"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      aria-label="logo"
+      aria-hidden="true"
     >
-      {/* Large sparkle — top left */}
-      <path
-        d="M10 10 L11.4 14.6 L16 16 L11.4 17.4 L10 22 L8.6 17.4 L4 16 L8.6 14.6 Z"
-        fill="#64FFDA"
-      />
-      {/* Small sparkle — top right */}
-      <path
-        d="M43 6 L43.9 8.6 L46.5 9.5 L43.9 10.4 L43 13 L42.1 10.4 L39.5 9.5 L42.1 8.6 Z"
-        fill="#64FFDA"
-        opacity="0.75"
-      />
-      {/* Back half of orbit ring (behind planet) */}
-      <ellipse
-        cx="30"
-        cy="32"
-        rx="19"
-        ry="7"
-        transform="rotate(-30 30 32)"
-        stroke="#64FFDA"
-        strokeWidth="1.5"
-        strokeDasharray="22 36"
-        strokeDashoffset="0"
-        fill="none"
-        opacity="0.4"
-      />
-      {/* Planet body */}
-      <circle
-        cx="30"
-        cy="32"
-        r="11"
-        fill="#050B18"
-        stroke="#64FFDA"
-        strokeWidth="1.5"
-      />
-      {/* Front half of orbit ring (in front of planet) */}
-      <ellipse
-        cx="30"
-        cy="32"
-        rx="19"
-        ry="7"
-        transform="rotate(-30 30 32)"
-        stroke="#64FFDA"
-        strokeWidth="1.5"
-        strokeDasharray="36 22"
-        strokeDashoffset="22"
-        fill="none"
-      />
+      <rect x="1" y="1" width="30" height="30" rx="8" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="16" cy="16" r="6" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M16 6v4M16 22v4M6 16h4M22 16h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   )
 }
@@ -65,7 +21,7 @@ function PlanetLogo() {
 const navLinks = [
   { href: '#about', label: 'About' },
   { href: '#skills', label: 'Skills' },
-  { href: '#projects', label: 'Projects' },
+  { href: '#projects', label: 'Work' },
   { href: '#experience', label: 'Experience' },
   { href: '#contact', label: 'Contact' },
 ]
@@ -82,82 +38,84 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-[#050B18]/90 backdrop-blur-md border-b border-[#1E2D4A]'
-          : 'bg-transparent'
+      className={`fixed top-0 w-full z-50 transition-colors duration-300 ${
+        scrolled ? 'bg-ink/90 backdrop-blur-md border-b border-line' : 'bg-transparent'
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
         <a
           href="#hero"
-          className="flex items-center gap-2 group hover:opacity-80 transition-opacity"
+          className="flex items-center gap-2 text-paper hover:text-paper-2 transition-colors"
           aria-label="Home"
         >
-          <PlanetLogo />
-          <span className="font-mono text-[#8892B0] text-sm group-hover:text-[#64FFDA] transition-colors hidden sm:inline">
-            univertse
-          </span>
+          <Logomark />
         </a>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-6">
-          {navLinks.map(({ href, label }, i) => (
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map(({ href, label }) => (
             <a
               key={href}
               href={href}
-              className="text-[#8892B0] hover:text-[#64FFDA] transition-colors font-mono text-sm group"
+              className="font-body text-sm text-paper-2 hover:text-paper transition-colors"
             >
-              <span className="text-[#64FFDA] text-xs mr-1 opacity-70">
-                {String(i + 1).padStart(2, '0')}.
-              </span>
               {label}
             </a>
           ))}
+        </div>
+
+        <div className="hidden md:flex items-center gap-3">
+          <a href="#contact" className="btn-pill">
+            Let&rsquo;s Connect
+          </a>
           <a
             href="/Badra_Samsudin_Ramdan_Nugraha_CV.pdf"
             download
-            className="px-4 py-2 text-sm font-mono border border-[#64FFDA] text-[#64FFDA] rounded hover:bg-[#64FFDA]/10 transition-all ml-2"
+            className="icon-badge"
+            aria-label="Download resume (PDF)"
           >
-            Resume
+            <Download size={16} />
           </a>
         </div>
 
         {/* Mobile toggle */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-[#64FFDA] p-1"
-          aria-label="Toggle menu"
+          className="md:hidden text-paper p-1 icon-badge !w-10 !h-10"
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
         >
-          {menuOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
+          {menuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-[#0D1527]/95 backdrop-blur-md border-b border-[#1E2D4A] px-6 py-6">
+        <div className="md:hidden bg-ink border-b border-line px-6 py-6">
           <div className="flex flex-col gap-5">
-            {navLinks.map(({ href, label }, i) => (
+            {navLinks.map(({ href, label }) => (
               <a
                 key={href}
                 href={href}
                 onClick={() => setMenuOpen(false)}
-                className="text-[#8892B0] hover:text-[#64FFDA] transition-colors font-mono"
+                className="font-body text-paper-2 hover:text-paper transition-colors"
               >
-                <span className="text-[#64FFDA] text-xs mr-2">
-                  {String(i + 1).padStart(2, '0')}.
-                </span>
                 {label}
               </a>
             ))}
-            <a
-              href="/Badra_Samsudin_Ramdan_Nugraha_CV.pdf"
-              download
-              className="mt-1 px-4 py-2 text-sm font-mono border border-[#64FFDA] text-[#64FFDA] rounded hover:bg-[#64FFDA]/10 transition-all text-center"
-            >
-              Resume
-            </a>
+            <div className="flex items-center gap-3 mt-1">
+              <a href="#contact" onClick={() => setMenuOpen(false)} className="btn-pill">
+                Let&rsquo;s Connect
+              </a>
+              <a
+                href="/Badra_Samsudin_Ramdan_Nugraha_CV.pdf"
+                download
+                className="icon-badge"
+                aria-label="Download resume (PDF)"
+              >
+                <Download size={16} />
+              </a>
+            </div>
           </div>
         </div>
       )}

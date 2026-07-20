@@ -1,57 +1,25 @@
-import { useEffect, useRef, useState } from 'react'
-import SectionTitle from './SectionTitle'
-
-function ExperienceItem({ item, index }) {
-  const ref = useRef(null)
-  const [visible, setVisible] = useState(false)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.1 },
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-
+function ExperienceRow({ item, index }) {
   return (
-    <div
-      ref={ref}
-      className={`relative pl-8 transition-all duration-700 ease-out ${
-        visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-      }`}
-      style={{ transitionDelay: visible ? `${index * 120}ms` : '0ms' }}
-    >
-      {/* Timeline dot — pulses in when card becomes visible */}
-      <div
-        className={`absolute left-0 top-1.5 w-3 h-3 rounded-full bg-[#64FFDA] ring-4 ring-[#64FFDA]/20
-          transition-all duration-500 ease-out
-          ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}
-        style={{ transitionDelay: visible ? `${index * 120 + 200}ms` : '0ms' }}
-      />
+    <div className="grid md:grid-cols-12 gap-4 md:gap-8 py-8 border-b border-line">
+      <div className="md:col-span-1">
+        <span className="font-display text-2xl text-paper-3">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+      </div>
 
-      <div className="glass-card rounded-lg p-5 neon-border">
-        <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
+      <div className="md:col-span-11">
+        <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
           <div>
-            <h3 className="text-[#CCD6F6] font-semibold">{item.title}</h3>
-            <p className="text-[#64FFDA] text-sm font-mono">{item.place}</p>
+            <h3 className="font-display text-lg text-paper">{item.title}</h3>
+            <p className="font-body text-sm text-paper-3">{item.place}</p>
           </div>
-          <span className="font-mono text-xs text-[#8892B0] bg-[#1E2D4A]/60 px-3 py-1 rounded-full whitespace-nowrap">
-            {item.year}
-          </span>
+          <span className="font-mono text-xs text-paper-3 whitespace-nowrap">{item.year}</span>
         </div>
-        <p className="text-[#8892B0] text-sm leading-relaxed">{item.desc}</p>
+        <p className="font-body text-sm text-paper-2 leading-relaxed max-w-2xl">{item.desc}</p>
         {item.tags && item.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-3">
             {item.tags.map((tag) => (
-              <span key={tag} className="tech-tag">
+              <span key={tag} className="tag-chip">
                 {tag}
               </span>
             ))}
@@ -63,44 +31,19 @@ function ExperienceItem({ item, index }) {
 }
 
 export default function Experience({ items }) {
-  const sectionRef = useRef(null)
-  const lineRef = useRef(null)
-  const [lineVisible, setLineVisible] = useState(false)
-
-  useEffect(() => {
-    const el = sectionRef.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setLineVisible(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.05 },
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-
   return (
-    <section id="experience" className="mb-28" ref={sectionRef}>
-      <SectionTitle number="04">Experience</SectionTitle>
+    <section id="experience" className="py-24 border-t border-line">
+      <div className="max-w-6xl mx-auto px-6">
+        <p className="font-mono text-xs tracking-[0.2em] uppercase text-paper-3 mb-2">
+          Experience
+        </p>
+        <h2 className="font-display text-2xl sm:text-3xl text-paper max-w-xl mb-10">
+          Building things, one role at a time.
+        </h2>
 
-      <div className="relative">
-        {/* Timeline line — draws down on scroll */}
-        <div
-          ref={lineRef}
-          className="absolute left-[5px] top-3 bottom-3 w-px bg-gradient-to-b from-[#64FFDA]/50 via-[#64FFDA]/20 to-transparent origin-top"
-          style={{
-            transform: lineVisible ? 'scaleY(1)' : 'scaleY(0)',
-            transition: 'transform 1.2s cubic-bezier(0.4, 0, 0.2, 1)',
-          }}
-        />
-
-        <div className="space-y-5">
+        <div>
           {items.map((item, i) => (
-            <ExperienceItem key={i} item={item} index={i} />
+            <ExperienceRow key={item.title + item.year} item={item} index={i} />
           ))}
         </div>
       </div>

@@ -1,92 +1,28 @@
-import SectionTitle from './SectionTitle'
-import { useInView } from '../hooks/useInView'
-import { FiGithub, FiLinkedin, FiMail, FiPhone } from 'react-icons/fi'
+import { Mail } from 'lucide-react'
 
-const socials = [
-  {
-    label: 'GitHub',
-    Icon: FiGithub,
-    href: 'https://github.com/bdrsmsdn',
-    value: 'bdrsmsdn',
-    color: '#CCD6F6',
-  },
-  {
-    label: 'LinkedIn',
-    Icon: FiLinkedin,
-    href: 'https://www.linkedin.com/in/bdrsmsdn',
-    value: 'bdrsmsdn',
-    color: '#4FC3F7',
-  },
-  {
-    label: 'Email',
-    Icon: FiMail,
-    href: 'mailto:badrasam7@gmail.com',
-    value: 'badrasam7@gmail.com',
-    color: '#64FFDA',
-  },
-  {
-    label: 'Phone',
-    Icon: FiPhone,
-    href: 'tel:+6281281817375',
-    value: '+62 812-8181-7375',
-    color: '#BB86FC',
-  },
-]
-
-export default function Contact({ email }) {
-  const [ref, inView] = useInView()
-
+export default function Contact({ email, phone }) {
   return (
-    <section
-      id="contact"
-      ref={ref}
-      className={`mb-20 transition-all duration-700 ease-out ${
-        inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-      }`}
-    >
-      <SectionTitle number="07">Get In Touch</SectionTitle>
-
-      <div className="max-w-2xl">
-        <p className="text-[#8892B0] leading-relaxed mb-8">
-          Currently open to new opportunities — whether it's full-time roles,
-          freelance work, or just a good conversation about tech. My inbox is always open.
+    <section id="contact" className="bg-cream text-dusk py-28">
+      <div className="max-w-3xl mx-auto px-6 text-center">
+        <h2 className="font-display text-3xl sm:text-5xl font-medium text-dusk text-balance mb-6">
+          Let&rsquo;s build something together.
+        </h2>
+        <p className="font-body text-dusk-2 leading-relaxed max-w-xl mx-auto mb-10">
+          Currently open to new opportunities — whether it&rsquo;s full-time roles, freelance
+          work, or just a good conversation about tech. My inbox is always open.
         </p>
 
-        {/* Primary CTA */}
-        <a
-          href={`mailto:${email}`}
-          className="inline-flex items-center gap-3 px-7 py-4 border border-[#64FFDA] text-[#64FFDA] font-mono text-sm rounded-lg hover:bg-[#64FFDA]/10 transition-all mb-10 group"
-        >
-          <FiMail size={18} />
+        <a href={`mailto:${email}`} className="btn-pill-inverse">
+          <Mail size={14} />
           Say Hello
-          <span className="opacity-0 group-hover:opacity-100 transition-opacity text-xs">→</span>
         </a>
 
-        {/* Social links */}
-        <div className="grid sm:grid-cols-2 gap-4">
-          {socials.map(({ label, Icon, href, value, color }) => (
-            <a
-              key={label}
-              href={href}
-              target={href.startsWith('http') ? '_blank' : undefined}
-              rel={href.startsWith('http') ? 'noreferrer' : undefined}
-              className="glass-card neon-border rounded-lg p-4 flex items-center gap-4 group transition-all"
-            >
-              <div
-                className="p-2.5 rounded-lg shrink-0 transition-all"
-                style={{ background: `${color}15` }}
-              >
-                <Icon size={18} style={{ color }} />
-              </div>
-              <div>
-                <p className="text-xs font-mono text-[#8892B0]">{label}</p>
-                <p className="text-[#CCD6F6] text-sm group-hover:text-[#64FFDA] transition-colors">
-                  {value}
-                </p>
-              </div>
-            </a>
-          ))}
-        </div>
+        <p className="font-mono text-xs text-dusk-2 mt-6">
+          Or reach me directly at{' '}
+          <a href={`tel:${phone.replace(/\s/g, '')}`} className="underline underline-offset-4 hover:text-dusk transition-colors">
+            {phone}
+          </a>
+        </p>
       </div>
     </section>
   )
