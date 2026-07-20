@@ -44,8 +44,8 @@ export default function Header({ profile }) {
             </a>
           </div>
 
-          <div className="md:col-span-3 md:col-start-3">
-            <p className="font-mono text-xs uppercase tracking-wide leading-7 text-paper-3 max-w-sm">
+          <div className="md:col-span-3 md:col-start-3 flex md:justify-end">
+            <p className="font-mono text-xs uppercase tracking-wide leading-7 text-paper-3 max-w-sm md:text-right md:ml-auto">
               {blurb}
             </p>
           </div>
