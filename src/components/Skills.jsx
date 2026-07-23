@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import {
   SiReact, SiAndroid, SiApple, SiDotnet, SiNodedotjs,
-  SiMysql, SiJavascript, SiPhp, SiGit, SiRoblox, SiSharp,
+  SiMysql, SiJavascript, SiPhp, SiGit, SiRoblox, SiSharp, SiFirebase,
 } from 'react-icons/si'
 import { Code2, Zap } from 'lucide-react'
 
 const iconMap = {
   SiReact, SiAndroid, SiApple, SiDotnet, SiNodedotjs, SiMysql,
-  SiJavascript, SiPhp, SiGit, SiRoblox,
+  SiJavascript, SiPhp, SiGit, SiRoblox, SiFirebase,
   SiCsharp: SiSharp, SiSharp,
   SiMicrosoftsqlserver: Code2,
 }
