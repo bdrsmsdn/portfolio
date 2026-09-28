@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Badra Samsudin Ramdan Nugraha - CV</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm 14mm 10mm 14mm;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 8.2pt;
+      line-height: 1.28;
+      color: #111827;
+      background: #ffffff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .header {
+      margin-bottom: 6px;
+    }
+    .name {
+      font-size: 14.5pt;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      color: #000000;
+      margin-bottom: 2px;
+    }
+    .contacts {
+      font-size: 8pt;
+      color: #374151;
+      margin-bottom: 2px;
+    }
+    .contacts a {
+      color: #1d4ed8;
+      text-decoration: none;
+    }
+    .location {
+      font-size: 8pt;
+      color: #4b5563;
+      margin-bottom: 4px;
+    }
+    .summary {
+      font-size: 8pt;
+      line-height: 1.25;
+      color: #374151;
+      text-align: justify;
+    }
+    .section-title {
+      font-size: 9.5pt;
+      font-weight: bold;
+      color: #0f172a;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 1px;
+      margin-top: 6px;
+      margin-bottom: 4px;
+    }
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 3px;
+      margin-bottom: 1px;
+    }
+    .company {
+      font-size: 8.8pt;
+      font-weight: bold;
+      color: #111827;
+    }
+    .role-title {
+      font-size: 8.4pt;
+      font-weight: bold;
+      font-style: italic;
+      color: #1f2937;
+    }
+    .date {
+      font-size: 8pt;
+      font-weight: bold;
+      color: #4b5563;
+      white-space: nowrap;
+    }
+    .bullets {
+      list-style-type: disc;
+      padding-left: 14px;
+      margin-top: 1px;
+      margin-bottom: 3px;
+    }
+    .bullets li {
+      font-size: 7.8pt;
+      line-height: 1.22;
+      color: #374151;
+      margin-bottom: 1px;
+    }
+    .bullets li strong {
+      color: #111827;
+    }
+    .skills-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5px;
+      margin-top: 2px;
+    }
+    .skill-line {
+      font-size: 7.8pt;
+      line-height: 1.22;
+      color: #374151;
+    }
+    .skill-line strong {
+      color: #111827;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="name">BADRA SAMSUDIN RAMDAN NUGRAHA</div>
+    <div class="contacts">
+      +62 81281817375 &nbsp;|&nbsp; 
+      <a href="mailto:badrasam7@gmail.com">badrasam7@gmail.com</a> &nbsp;|&nbsp; 
+      <a href="https://www.linkedin.com/in/bdrsmsdn">linkedin.com/in/bdrsmsdn</a> &nbsp;|&nbsp; 
+      <a href="https://univertse.my.id">univertse.my.id</a>
+    </div>
+    <div class="location">Kuningan, Setiabudi, Jakarta Selatan</div>
+    <div class="summary">
+      Software Engineer at PT. Bank Negara Indonesia (Persero) Tbk with deep expertise in enterprise backend systems (.NET 8, ASP.NET Core, SQL Server, Ocelot Gateway) and native mobile engineering (iOS & Android with React Native). Proven track record architecting high-concurrency microservices, spatial geofencing verification, multi-stage approval engines, and production mobile applications used nationwide by thousands of BNI employees.
+    </div>
+  </div>
+
+  <div class="section-title">Work Experiences</div>
+
+  <div class="job-header">
+    <span class="company">PT. Bank Negara Indonesia (Persero) Tbk &mdash; Central Jakarta, Indonesia</span>
+  </div>
+
+  <!-- Mobile Role -->
+  <div class="job-header" style="margin-top: 1px;">
+    <span class="role-title">Software Engineer &mdash; Mobile</span>
+    <span class="date">2026 &ndash; Present</span>
+  </div>
+  <ul class="bullets">
+    <li>Led mobile engineering for <strong>Branch Navigation</strong> (iOS & Android) actively used by thousands of BNI employees across regional and branch offices nationwide; published to <strong>Google Play Store</strong>.</li>
+    <li>Implemented <strong>biometric authentication</strong> (fingerprint & face recognition) and push notification pipelines via <strong>Firebase Cloud Messaging</strong> & <strong>APNs</strong> enterprise distribution.</li>
+    <li>Integrated secure REST APIs with backend microservices; remediated security findings across <strong>SAST, DAST, penetration testing</strong>, and performance test suites.</li>
+  </ul>
+
+  <!-- Backend Role -->
+  <div class="job-header" style="margin-top: 2px;">
+    <span class="role-title">Software Engineer &mdash; Backend</span>
+    <span class="date">Sep 2023 &ndash; Present</span>
+  </div>
+  <ul class="bullets">
+    <li>Architected the <strong>BNI Frontliners System</strong> .NET 8 <strong>ServiceRating</strong> microservice with <strong>EF Core</strong> and <strong>Ocelot API Gateway</strong> upstream routing for branch customer evaluation.</li>
+    <li>Implemented branch <strong>geofence verification</strong> using SQL Server spatial functions and <strong>AES-encrypted QR tokens</strong> to enforce physical branch presence and prevent spoofing.</li>
+    <li>Engineered a high-concurrency race condition guard using <strong>SemaphoreSlim</strong> and ACID database transactions to prevent double-submit anomalies during peak branch hours.</li>
+    <li>Modeled <strong>BranchNav organizational hierarchy snapshotting</strong> (Wilayah_Id, Cabang_Id, Unit_Id, Jenis_Unit) ensuring immutable audit trails and granular reporting.</li>
+    <li>Developed dual-scope rating APIs for frontliner service (CS/Teller) and branch facilities, real-time fraud mitigation (blacklists, cooldowns), and complaint settlement workflows.</li>
+    <li>Hardened application security via <strong>IP rate limiting, OWASP response headers, XSS sanitization</strong>, and in-memory caching validated through <strong>24 unit/integration test cases</strong>.</li>
+    <li>Designed multi-stage approval workflow engines (submit &rarr; review &rarr; approve &rarr; extend/close) using hybrid EF Core and stored procedures; authored technical specs for maker-checker banking workflows.</li>
+    <li>Optimized SQL Server query performance through index-seek and cardinality-estimate tuning; conducted stored procedure assessments across authentication, biometric, and benefits modules.</li>
+    <li>Implemented SSO via LDAP, hierarchical RBAC (pusat, wilayah, cabang, outlet), server-side caching, and IIS deployment pipelines compliant with BNI SAST/DAST standards.</li>
+  </ul>
+
+  <!-- Internships -->
+  <div class="job-header" style="margin-top: 2px;">
+    <span class="company">PT. SAB Indo Industries &mdash; Cimahi, West Java</span>
+    <span class="date">Mar 2023 &ndash; Aug 2023</span>
+  </div>
+  <div class="job-header" style="margin-top: 1px;">
+    <span class="role-title">Web Developer Intern</span>
+  </div>
+  <ul class="bullets">
+    <li>Analyzed HR recruitment workflows and built an internal candidate evaluation web system using PHP (CodeIgniter) and MySQL for SpeedJersey operations.</li>
+  </ul>
+
+  <div class="job-header" style="margin-top: 2px;">
+    <span class="company">PT. Bahana Global Solution &mdash; Bandung, West Java</span>
+    <span class="date">Sep 2022 &ndash; Dec 2022</span>
+  </div>
+  <div class="job-header" style="margin-top: 1px;">
+    <span class="role-title">Mobile Developer Intern</span>
+  </div>
+  <ul class="bullets">
+    <li>Developed Android application PBPRSI using React Native, collaborated with backend engineers on REST API integrations, and designed UI wireframes in Figma.</li>
+  </ul>
+
+  <div class="section-title">Education Level</div>
+
+  <div class="job-header">
+    <span class="company">Universitas Komputer Indonesia &mdash; Bandung, West Java</span>
+    <span class="date">Sep 2019 &ndash; Sep 2023</span>
+  </div>
+  <div class="job-header" style="margin-top: 1px;">
+    <span class="role-title">Bachelor of Informatics Engineering (GPA: 3.23)</span>
+  </div>
+  <ul class="bullets" style="margin-bottom: 2px;">
+    <li>Final Thesis: Recruitment Management Information System &mdash; focused on software engineering, database design, and web architecture.</li>
+  </ul>
+
+  <div class="section-title">Skills, Achievements & Other Projects</div>
+
+  <div class="skills-grid">
+    <div class="skill-line">
+      <strong>Key Projects:</strong> 
+      <strong>BNI Frontliners System</strong> (.NET 8 ServiceRating microservice, Spatial Geofencing, AES QR, SemaphoreSlim); 
+      <strong>Branch Navigation Mobile & Web</strong> (React Native, FCM, APNs, Biometric Auth, Workflow Engine); 
+      Production Information System (PT SAB); Healthcare Forecasting System (UPTD Talaga).
+    </div>
+    <div class="skill-line">
+      <strong>Certifications & Achievements:</strong> Certified Junior Web Programmer (BNSP, 2023); Published Branch Navigation to Google Play Store.
+    </div>
+    <div class="skill-line">
+      <strong>Backend & Architecture:</strong> .NET 8, ASP.NET Core, C#, EF Core, Ocelot API Gateway, Microservices, SQL Server (Spatial/T-SQL), Concurrency (SemaphoreSlim), IIS, REST APIs.
+    </div>
+    <div class="skill-line">
+      <strong>Mobile & Frontend:</strong> React Native, iOS, Android, Firebase (FCM), APNs, React, JavaScript, Razor Pages, PHP (CodeIgniter), MySQL, Figma.
+    </div>
+    <div class="skill-line">
+      <strong>Security & Operations:</strong> SAST / DAST / Pentest Remediation, OWASP Top 10, AES Encryption, IP Rate Limiting, Git, LDAP SSO, RBAC.
+    </div>
+    <div class="skill-line">
+      <strong>Soft Skills:</strong> Problem Solving, Critical Thinking, Cross-team Technical Communication, Agile / Scrum Collaboration.
+    </div>
+  </div>
+
+</body>
+</html>

@@ -3,7 +3,7 @@ const profile = {
   role: 'Software Engineer',
   location: 'Jakarta, Indonesia',
   phone: '+62 81281817375',
-  about: `Fullstack Software Engineer with a strong backend foundation and hands-on mobile expertise. Started career building enterprise-grade backend systems at BNI — Indonesia's largest state-owned bank — using ASP.NET Core, SQL Server, IIS, and security-hardened API gateways. In 2026, shifted primary focus to mobile engineering (iOS & Android) while staying deeply engaged with backend and web. Comfortable across the full stack: from database queries and server-side APIs to native mobile apps and web portals.`,
+  about: `Fullstack Software Engineer with a strong backend foundation and hands-on mobile expertise. Started career building enterprise-grade backend systems at BNI — Indonesia's largest state-owned bank — using ASP.NET Core, .NET 8, SQL Server, IIS, and security-hardened API gateways. In 2026, expanded scope to mobile engineering (iOS & Android) while continuing to architect high-concurrency microservices, spatial geofencing, and approval workflows. Comfortable across the full stack: from database queries and server-side APIs to native mobile apps and web portals.`,
   tagline: 'Backend roots. Mobile now. Fullstack always.',
   experience: [
     {
@@ -24,8 +24,8 @@ const profile = {
       year: 'Sep 2023 – Present',
       title: 'Software Engineer — Backend',
       place: 'PT Bank Negara Indonesia (BNI)',
-      desc: 'Built and maintained enterprise backend systems using ASP.NET Core deployed on IIS. Implemented SSO via LDAP, RBAC with hierarchical roles, and server-side caching, and Ocelot API Gateway. Designed and implemented multi-stage approval workflow engines (submit → review → approve → extend/close) using a hybrid EF Core and stored-procedure data-access pattern, and authored functional and technical specifications for a cross-platform maker-checker approval workflow integrating mobile, backend, and core-banking systems — including security design, audit logging, and reliable retry/sync mechanisms. Optimized SQL Server query performance through index-seek and cardinality-estimate improvements, and continues to conduct stored-procedure database assessments across authentication, biometric enrollment, employee-benefits, and system-modernization modules to support ongoing change requests. Developed automation scripts for deployment and reporting pipelines. Led SAST/DAST compliance efforts and participated in .NET 8 migration.',
-      tags: ['ASP.NET Core', 'C#', 'SQL Server', 'IIS', 'LDAP', 'RBAC', 'Ocelot', 'Workflow Design', 'Technical Specs', 'Query Optimization', 'SAST/DAST', 'Automation', 'DB Assessment'],
+      desc: 'Built and maintained enterprise backend systems and microservices using ASP.NET Core and .NET 8 deployed on IIS. Architected the BNI Frontliners System .NET 8 ServiceRating microservice integrated with EF Core and Ocelot API Gateway upstream routing. Implemented branch geofencing verification using SQL Server spatial functions and AES-encrypted QR tokens for fraud-resistant physical presence validation. Built high-concurrency race condition guards using SemaphoreSlim and database transactions to prevent double-submit anomalies. Modeled the BranchNav organizational hierarchy snapshot (Wilayah_Id, Cabang_Id, Unit_Id, Jenis_Unit) for branch-level performance auditability. Developed dual-scope rating APIs (frontliner CS/Teller service and branch facilities), real-time fraud mitigation (blacklists, rapid-submit cooldowns), complaint settlement workflows, and application security hardening (OWASP headers, IP rate limiting, XSS sanitization) backed by 24 unit/integration test suites. Designed multi-stage approval workflow engines (submit → review → approve → extend/close) using a hybrid EF Core and stored-procedure architecture, and authored functional and technical specifications for cross-platform maker-checker approval workflows integrating mobile, backend, and core-banking systems. Optimized SQL Server query performance through index-seek and cardinality-estimate improvements, conducted stored-procedure database assessments, and led SAST/DAST compliance.',
+      tags: ['.NET 8', 'ASP.NET Core', 'C#', 'SQL Server', 'EF Core', 'Microservices', 'Ocelot', 'Spatial Geofence', 'SemaphoreSlim', 'AES Encryption', 'IIS', 'Workflow Design', 'SAST/DAST'],
     },
     {
       year: 'Mar 2023 – Aug 2023',
@@ -52,6 +52,7 @@ const profile = {
   ],
   achievements: [
     'Certified Junior Web Programmer — BNSP, 2023',
+    'Architected .NET 8 ServiceRating microservice for BNI Frontliners System — featuring spatial geofencing, AES QR tokens, and SemaphoreSlim concurrency controls',
     'Published Branch Navigation to Google Play Store — actively used by thousands of BNI employees across regional and branch offices nationwide',
     'Implemented biometric authentication (fingerprint & face recognition) for Branch Navigation mobile at BNI',
     'Led SAST/DAST, penetration testing, and performance testing compliance for Branch Navigation (web & mobile)',
@@ -65,9 +66,14 @@ const profile = {
     { name: 'iOS', icon: 'SiApple', category: 'Mobile', color: '#A8A8A8' },
     { name: 'Firebase', icon: 'SiFirebase', category: 'Mobile', color: '#FFCA28' },
     { name: 'Push Notifications', icon: null, category: 'Mobile', color: '#FF6B6B' },
+    { name: '.NET 8', icon: 'SiDotnet', category: 'Backend', color: '#512BD4' },
     { name: 'ASP.NET Core', icon: 'SiDotnet', category: 'Backend', color: '#512BD4' },
     { name: 'C#', icon: 'SiSharp', category: 'Backend', color: '#9B4F96' },
+    { name: 'EF Core', icon: null, category: 'Backend', color: '#512BD4' },
     { name: 'SQL Server', icon: 'SiMicrosoftsqlserver', category: 'Backend', color: '#CC2927' },
+    { name: 'Microservices & Ocelot', icon: null, category: 'Backend', color: '#64FFDA' },
+    { name: 'Spatial SQL & Geofencing', icon: null, category: 'Backend', color: '#CC2927' },
+    { name: 'Concurrency & SemaphoreSlim', icon: null, category: 'Backend', color: '#FF6B6B' },
     { name: 'Node.js', icon: 'SiNodedotjs', category: 'Backend', color: '#339933' },
     { name: 'MySQL', icon: 'SiMysql', category: 'Backend', color: '#4479A1' },
     { name: 'IIS & Windows Server', icon: null, category: 'Backend', color: '#0078D7' },
@@ -90,6 +96,14 @@ const profile = {
     'Cross-team Technical Communication',
   ],
   projects: [
+    {
+      title: 'BNI Frontliners System — Backend',
+      desc: 'Enterprise .NET 8 ServiceRating microservice handling customer feedback and branch evaluations across BNI branches nationwide. Features physical presence validation via SQL Server spatial geofencing and AES-encrypted QR tokens, double-submit prevention with SemaphoreSlim concurrency guards and database transactions, BranchNav organizational hierarchy snapshotting, dual-scope rating APIs (CS/Teller and facilities), real-time fraud mitigation (blacklists, cooldowns), and OWASP security hardening backed by 24 unit/integration test cases.',
+      tags: ['.NET 8', 'C#', 'EF Core', 'Ocelot', 'Spatial Geofencing', 'AES Encryption', 'SemaphoreSlim', 'Microservices', 'OWASP'],
+      github: null,
+      live: null,
+      featured: true,
+    },
     {
       title: 'Branch Navigation — Mobile',
       desc: 'Enterprise iOS & Android app for internal BNI operations, built with React Native. Published to Google Play Store and actively used by thousands of BNI employees nationwide. Features biometric authentication (fingerprint & face) and push notifications (Firebase Cloud Messaging), and has passed SAST, penetration testing, and performance testing.',
