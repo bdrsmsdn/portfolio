@@ -158,12 +158,12 @@
     <span class="date">Sep 2023 &ndash; Present</span>
   </div>
   <ul class="bullets">
-    <li>Architected the <strong>BNI Frontliners System</strong> .NET 8 <strong>ServiceRating</strong> microservice with <strong>EF Core</strong> and <strong>Ocelot API Gateway</strong> upstream routing for branch customer evaluation.</li>
-    <li>Implemented branch <strong>geofence verification</strong> using SQL Server spatial functions and <strong>AES-encrypted QR tokens</strong> to enforce physical branch presence and prevent spoofing.</li>
-    <li>Engineered a high-concurrency race condition guard using <strong>SemaphoreSlim</strong> and ACID database transactions to prevent double-submit anomalies during peak branch hours.</li>
-    <li>Modeled <strong>BranchNav organizational hierarchy snapshotting</strong> (Wilayah_Id, Cabang_Id, Unit_Id, Jenis_Unit) ensuring immutable audit trails and granular reporting.</li>
-    <li>Developed dual-scope rating APIs for frontliner service (CS/Teller) and branch facilities, real-time fraud mitigation (blacklists, cooldowns), and complaint settlement workflows.</li>
-    <li>Hardened application security via <strong>IP rate limiting, OWASP response headers, XSS sanitization</strong>, and in-memory caching validated through <strong>24 unit/integration test cases</strong>.</li>
+    <li>Architected the <strong>BNI Frontliners System</strong> .NET 8 <strong>ServiceRating</strong> microservice with <strong>EF Core</strong> and <strong>Ocelot API Gateway</strong> upstream routing.</li>
+    <li>Implemented branch <strong>spatial geofencing</strong> and <strong>AES-encrypted QR tokens</strong> for tamper-resistant physical presence verification.</li>
+    <li>Engineered high-concurrency race condition guards using <strong>SemaphoreSlim</strong> and ACID database transactions to prevent double-submit anomalies.</li>
+    <li>Modeled <strong>multi-tier organizational hierarchy snapshotting</strong> across regional, branch, and unit tiers ensuring immutable historical auditability.</li>
+    <li>Developed dual-scope rating APIs (frontliner CS/Teller service and branch facilities), real-time fraud mitigation, and complaint settlement workflows.</li>
+    <li>Hardened application security via <strong>IP rate limiting, OWASP response headers, XSS sanitization</strong>, and in-memory caching backed by automated test suites.</li>
     <li>Designed multi-stage approval workflow engines (submit &rarr; review &rarr; approve &rarr; extend/close) using hybrid EF Core and stored procedures; authored technical specs for maker-checker banking workflows.</li>
     <li>Optimized SQL Server query performance through index-seek and cardinality-estimate tuning; conducted stored procedure assessments across authentication, biometric, and benefits modules.</li>
     <li>Implemented SSO via LDAP, hierarchical RBAC (pusat, wilayah, cabang, outlet), server-side caching, and IIS deployment pipelines compliant with BNI SAST/DAST standards.</li>
